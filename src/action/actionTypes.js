@@ -1,0 +1,1 @@
+export const GET_POKEDEX_LIST = 'GET_POKEDEX_LIST'

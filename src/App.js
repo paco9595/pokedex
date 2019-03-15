@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
-import './App.css';
-
 class App extends Component {
   render() {
     return (
       <div className="App">
+        {JSON.stringify(this.props)}
+        <button>hola</button>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -24,5 +25,10 @@ class App extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  //simpleAction: () => dispatch(simpleAction('paco'))
+})
+const mapStateToProps = state => ({
 
-export default App;
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App);
