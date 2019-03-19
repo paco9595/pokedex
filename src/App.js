@@ -1,34 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
+import { setPokemonList } from "./action/listPokedexAction";
+import { PokemonList } from './components/pokemonList'
 class App extends Component {
+  componentDidMount() {
+    this.props.setPokemonList()
+  }
   render() {
     return (
       <div className="App">
-        {JSON.stringify(this.props)}
-        <button>hola</button>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <PokemonList list={this.props.list} />
       </div>
     );
   }
 }
 const mapDispatchToProps = dispatch => ({
-  //simpleAction: () => dispatch(simpleAction('paco'))
+  setPokemonList: () => dispatch(setPokemonList())
 })
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    list: state.listPokedexReducer.list.pokemon_entries
+  }
+}
 export default connect(mapStateToProps, mapDispatchToProps)(App);

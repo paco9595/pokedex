@@ -1,4 +1,4 @@
-import { GET_POKEDEX_LIST } from ''
+import { GET_POKEDEX_LIST } from './actionTypes'
 import { ActionCreator } from "./../utils/actionCreator";
 
-export const simpleAction = ActionCreator(GET_POKEDEX_LIST, 'name')
+export const setPokemonList = ActionCreator(GET_POKEDEX_LIST, 'list')
