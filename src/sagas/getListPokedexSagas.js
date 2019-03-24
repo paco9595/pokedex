@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { GET_POKEDEX_LIST } from './../action/actionTypes'
 export function* getListPokedex() {
     try {

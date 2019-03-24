@@ -2,10 +2,24 @@ import React from 'react'
 import styled from 'styled-components'
 import { Card } from "@blueprintjs/core";
 const PokemonListContainer = styled.div`
-    width:300px;
+    width:310px;
     div  .cardClass{
         padding: 0;
     }
+    height: 500px;
+    overflow: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #10161a33;
+        outline: 1px solid slategrey;
+        border-radius: 10px;
+    }
+
 `
 const CardWrapper = styled.div`
     display: flex;
@@ -28,16 +42,14 @@ const PokemonItem = props => {
 }
 
 export const PokemonList = props => {
-
-    const click = (item) => console.log(item)
     return (
         <PokemonListContainer>
             <div className="bp3-input-group .modifier bp3-small">
                 <span className="bp3-icon bp3-icon-search"></span>
-                <input className="bp3-input" type="search" placeholder="Search input" dir="auto" />
+                <input className="bp3-input" type="search" placeholder="Search input" dir="auto" onChange={props.search} />
             </div>
             <div>
-                {props.list.map(item => <PokemonItem item={item} key={item.entry_number} click={click} />)}
+                {props.list.map(item => <PokemonItem item={item} key={item.entry_number} click={e => props.click(e)} />)}
             </div>
         </PokemonListContainer>
     )
