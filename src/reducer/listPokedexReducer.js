@@ -2,7 +2,6 @@ import * as actionTypes from './../action/actionTypes'
 import { defaultState } from './../defaultState'
 
 export default (state = defaultState, action) => {
-    console.log(action)
     switch (action.type) {
         case actionTypes.GET_POKEDEX_LIST:
             return {

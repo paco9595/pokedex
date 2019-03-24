@@ -50,10 +50,7 @@ class App extends Component {
 const mapDispatchToProps = dispatch => ({
   setPokemonList: () => dispatch(setPokemonList())
 })
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-    //list: state.listPokedexReducer.list.pokemon_entries
-  }
-}
+const mapStateToProps = state => ({
+  //list: state.listPokedexReducer.list.pokemon_entries
+})
 export default connect(mapStateToProps, mapDispatchToProps)(App);
