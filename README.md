@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/paco9595/pokedex/branches/master/shields_badge.svg)](https://semaphoreci.com/paco9595/pokedex)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
