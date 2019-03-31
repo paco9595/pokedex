@@ -1,1 +1,2 @@
 export const GET_POKEDEX_LIST = 'GET_POKEDEX_LIST'
+export const SET_POKEDEX_LIST = 'SET_POKEDEX_LIST'

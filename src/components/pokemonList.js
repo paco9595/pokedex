@@ -43,14 +43,17 @@ const PokemonItem = props => {
 
 export const PokemonList = props => {
     return (
-        <PokemonListContainer>
+        <div>
+
             <div className="bp3-input-group .modifier bp3-small">
                 <span className="bp3-icon bp3-icon-search"></span>
                 <input className="bp3-input" type="search" placeholder="Search input" dir="auto" onChange={props.search} />
             </div>
-            <div>
-                {props.list.map(item => <PokemonItem item={item} key={item.entry_number} click={e => props.click(e)} />)}
-            </div>
-        </PokemonListContainer>
+            <PokemonListContainer>
+                <div>
+                    {props.list && props.list.map(item => <PokemonItem item={item} key={item.entry_number} click={e => props.click(e)} />)}
+                </div>
+            </PokemonListContainer>
+        </div>
     )
 }

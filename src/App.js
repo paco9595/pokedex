@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setPokemonList } from "./action/listPokedexAction";
 import { PokemonList } from './components/pokemonList'
 import { DisplayPokemon } from './components/displayPokemon'
-import { pokemonListData as list } from './data/pokemonList'
+//import { pokemonListData as list } from './data/pokemonList'
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
@@ -17,9 +17,14 @@ class App extends Component {
     item: {},
     list: []
   }
-  componentDidMount() {
-    //this.props.setPokemonList()
-    this.setState({ list })
+  componentWillMount() {
+    this.props.setPokemonList()
+    //this.setState({ list })
+  }
+  componentWillReceiveProps(props) {
+    if (props.lists && props.lists.length > 0) {
+      this.setState({ list: props.lists })
+    }
   }
   click = item => {
     this.setState({ item })
@@ -27,15 +32,17 @@ class App extends Component {
   search = e => {
     const word = e.target.value;
     if (word !== '') {
-      this.setState({ list })
-      this.setState({
-        list: this.state.list
-          .filter(item =>
-            item.pokemon_species.name.includes(word) || item.entry_number.toString().includes(word)
-          )
+      this.setState({ list: this.props.filterList }, () => {
+        this.setState({
+          list: this.state.list
+            .filter(item =>
+              item.pokemon_species.name.includes(word) || item.entry_number.toString().includes(word)
+            )
+        })
       })
     } else {
-      this.setState({ list })
+      this.props.setPokemonList()
+      // this.setState({ list })
     }
   }
   render() {
@@ -51,6 +58,7 @@ const mapDispatchToProps = dispatch => ({
   setPokemonList: () => dispatch(setPokemonList())
 })
 const mapStateToProps = state => ({
-  //list: state.listPokedexReducer.list.pokemon_entries
+  lists: state.listPokedexReducer.list,
+  filterList: state.listPokedexReducer.list
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
