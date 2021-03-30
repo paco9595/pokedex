@@ -37,7 +37,7 @@ const DisplayPokemon = (props) => {
                     />
                 )}
             </div>
-            <div style={{ marginLeft: 40 }}>{name && <h2>{name}</h2>}</div>
+            <div style={{ marginLeft: 40 }}>{name && <h2>#{id} {name}</h2>}</div>
             {description && (
                 <div style={{ marginLeft: 40 }}>
                     <p>{description.flavor_text}</p>
