@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setPokemonList, setSelectedPokemon } from "./action/listPokedexAction";
 import { PokemonList } from './components/pokemonList'
 import DisplayPokemon  from './components/displayPokemon'
-import {DisplayPokedex }from './components/displayPoquedex'
+import {DisplayPokedex }from './components/displayPokedex'
 import bgImage from './images/bg.png'
 import './app.css';
 //import { pokemonListData as list } from './data/pokemonList'
