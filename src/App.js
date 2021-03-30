@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setPokemonList } from "./action/listPokedexAction";
+import { setPokemonList, setSelectedPokemon } from "./action/listPokedexAction";
 import { PokemonList } from './components/pokemonList'
-import { DisplayPokemon } from './components/displayPokemon'
+import DisplayPokemon  from './components/displayPokemon'
+import {DisplayPokedex }from './components/displayPoquedex'
+import bgImage from './images/bg.png'
+import './app.css';
 //import { pokemonListData as list } from './data/pokemonList'
 import styled from 'styled-components'
 
@@ -11,6 +14,13 @@ const AppContainer = styled.div`
   justify-content:center;
   align-items:center;
 `
+const ImgContainer = styled.img`
+    overflow: hidden;
+    position: absolute;
+    z-index: -100;
+    top: 0;
+    left: auto;
+`;
 
 class App extends Component {
   state = {
@@ -28,6 +38,7 @@ class App extends Component {
   }
   click = item => {
     this.setState({ item })
+    this.props.setSelectedPokemon(item.pokemon_species.url);
   }
   search = e => {
     const word = e.target.value;
@@ -48,17 +59,24 @@ class App extends Component {
   render() {
     return (
       <AppContainer className="App">
-        <DisplayPokemon item={this.state.item} />
+        <div>
+          <ImgContainer src={bgImage}/>
+        </div>
+        <DisplayPokedex>
+          <DisplayPokemon/>
+        </DisplayPokedex>
         <PokemonList list={this.state.list} click={this.click} search={this.search} />
       </AppContainer>
     );
   }
 }
 const mapDispatchToProps = dispatch => ({
-  setPokemonList: () => dispatch(setPokemonList())
+  setPokemonList: () => dispatch(setPokemonList()),
+  setSelectedPokemon: (props) => dispatch(setSelectedPokemon(props))
 })
 const mapStateToProps = state => ({
   lists: state.listPokedexReducer.list,
-  filterList: state.listPokedexReducer.list
+  filterList: state.listPokedexReducer.list,
+  selected: state.listPokedexReducer.selected
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
