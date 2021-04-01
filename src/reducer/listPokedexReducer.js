@@ -1,7 +1,6 @@
 import * as actionTypes from './../action/actionTypes'
 import { defaultState } from './../defaultState'
-
-export default (state = defaultState, action) => {
+const  reducer = (state = defaultState, action) => {
     switch (action.type) {
         case actionTypes.SET_POKEDEX_LIST:
             return {
@@ -17,3 +16,4 @@ export default (state = defaultState, action) => {
             return state;
     }
 }
+export default reducer

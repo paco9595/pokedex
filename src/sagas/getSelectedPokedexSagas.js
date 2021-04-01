@@ -4,7 +4,7 @@ import { SET_SELECTED_POKEMON } from "./../action/actionTypes";
 export function* getSelectedPokedex(props) {
     try {
         const response = yield fetch(
-            props.Selected
+            `https://pokeapi.co/api/v2/pokemon/${props.Selected}`
         ).then((response) => response.json());
         console.log(response)
         yield put({ type: SET_SELECTED_POKEMON, selected: response });

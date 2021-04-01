@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.14.1",
+    "classnames": "^2.2.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
-    "react-scripts": "^4.0.2",
+    "react-scripts": "^4.0.3",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "styled-components": "^4.1.3"
